@@ -106,15 +106,15 @@ const consumoLavarropas = ArrayLavarropas.reduce((acc,LR)=>{
 let consumoTotal = consumoFocos + consumoHeladeras + consumoAiresAcondicionados
     + consumoMicroondas + consumoPavaElectrica + consumoLavarropas;
 
-alert(nombre + " Los consumos siguientes estan calculados en KW-h" +
-    " El consumo de sus focos es " + consumoFocos +
-    " El consumo de sus heladeras es " + consumoHeladeras +
-    " El consumo de sus A.A es " + consumoAiresAcondicionados
-    + " El consumo de sus microondas es " + consumoMicroondas +
-    " El consumo de sus pavas electricas es " + consumoPavaElectrica
-    + " El consumo de sus lavarropas es " + consumoLavarropas)
+alert(nombre + " Los consumos siguientes estan calculados en KW-h," +
+    " el consumo de sus focos es " + consumoFocos +
+    " ,el consumo de sus heladeras es " + consumoHeladeras +
+    " ,el consumo de sus A.A es " + consumoAiresAcondicionados
+    + " ,el consumo de sus microondas es " + consumoMicroondas +
+    " ,el consumo de sus pavas electricas es " + consumoPavaElectrica
+    + " ,el consumo de sus lavarropas es " + consumoLavarropas)
 
-alert(nombre + " Segun sus datos ingresados, tiene un consumo de " + consumoTotal + " KW-h diarios")
+alert(nombre + " ,segun sus datos ingresados, tiene un consumo de " + consumoTotal + " KW-h diarios")
 
 if (consumoTotal > 9) {
     alert("Su consumo se encuentra por encima promedio, el 80% de los consumos residenciales estan por debajo del suyo, por favor mejorar, el medio ambiente se lo ruega, CUIDEMOS EL PLANETA :(")

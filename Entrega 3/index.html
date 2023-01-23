@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preentrega3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Entrega 3/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../Entrega 3/index.html"> <img
+                        src="../Entrega 3/assets/imagenes/calculadora-consumo-electrico.jpg"
+                        alt="Logo Compañia Nutricional" class="header__imagen"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-end">
+                        <li class="nav-item">
+                            <a class="nav-link navbaritem" href="../Entrega 3/index.html">CALCULADORA DE CONSUMOS
+                                ELECTRICOS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container d-flex justify-content-center">
+            <img src="../Entrega 3/assets/imagenes/focoimg.png" alt="Imagen Decorativa Foco" class="main__img">
+        </div>
+        <div class="container">
+            <h1 class="d-flex justify-content-center">Ingrese sus Electrodomesticos</h1>
+            <form id="ingreso-electrodomesticos">
+
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre Electrodomestico:</label>
+                    <select class="form-select" aria-label="Default select example" id="nombre" required>
+                        <option value="Foco">Foco</option>
+                        <option value="Heladera">Heladera</option>
+                        <option value="AAcondicionado">AAcondicionado</option>
+                        <option value="Microondas">Microondas</option>
+                        <option value="PavaElectrica">PavaElectrica</option>
+                        <option value="Lavarropas">Lavarropas</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" class="form-control" id="cantidad" required>
+                </div>
+                <div class="mb-3">
+                    <label for="horasDeUso" class="form-label">Horas De Uso:</label>
+                    <input type="number" class="form-control" id="HorasdeUso" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                </div>
+            </form>
+            <p id="mensaje-error"></p>
+            <table id="tabla" class="table">
+                <tr>
+                    <th>Nombre de Electrodomestico</th>
+                    <th>Cantidad</th>
+                    <th>Horas De Uso</th>
+                </tr>
+            </table>
+        </div>
+        <div class="row d-flex justify-content-center m-2 justify-content-md-between">
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Focos">Calcular Consumo Focos</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Heladeras">Calcular Consumo
+                Heladeras</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Aires">Calcular Consumo Aires</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Microondas">Calcular Consumo
+                Microondas</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo PavaElectrica">Calcular Consumo Pava
+                Electrica</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Lavarropas">Calcular Consumo
+                Lavarropas</button>
+            <button type="submit" class="btn btn-primary mb-3" id="Consumo Total">Calcular Consumo Total</button>
+        </div>
+        <div>
+            <h2 class="texto_totales" id="mensaje-totales"></h2>
+        </div>
+    </main>
+    <footer class="footer d-flex justify-content-around align-items-center row-cols-2">
+        <h1>EL MEDIO AMBIENTE NECESITA DE TODOS</h1>
+        <img src="../Entrega 3/assets/imagenes/WEBG-Eficiencia.jpg" alt="Logo Electrico" class="footer__img">
+    </footer>
+    <script src="../Entrega 3/js/AgregarFila.js"></script>
+    <script src="../Entrega 3/js/Electrodomesticos.js"></script>
+    <script src="../Entrega 3/js/Calculos.js"></script>
+    <script src="../Entrega 3/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
