@@ -2,12 +2,17 @@ const formulario = document.getElementById("ingreso-electrodomesticos");
 const mensajeError = document.getElementById('mensaje-error');
 const tabla = document.getElementById("tabla");
 let MensajeTotal = document.getElementById("mensaje-totales");
-const Equipos = JSON.parse(localStorage.getItem("elementoselectricos"));
+const EquiposDelLocalStorage=JSON.parse(localStorage.getItem("elementoselectricos"))|| [];
+const Equipos = EquiposDelLocalStorage.map((electrodomestico)=>{
+    return new Electrodomesticos(electrodomestico);
+});
 
-/* for (elementos of Equipos){
+console.log(EquiposDelLocalStorage,Equipos);
+
+for(const elementos of Equipos){
     agregarFilaALaTabla(elementos);
-}
- */
+};
+
 
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -20,6 +25,8 @@ formulario.addEventListener("submit", (e) => {
         mensajeError.innerText = 'Tienes que poner una cantidad mayor a 0';
         return;
     }
+    Equipos.push(electrodomestico)
+
     agregarFilaALaTabla(electrodomestico);
     
     for (const input of e.target) {
@@ -118,5 +125,3 @@ BotonTotales.addEventListener("click", (e) => {
         MensajeTotal.innerText = "Su consumo total es  " + consumoTotal + "KW-h, se encuentra en el promedio, el 80% de los consumos residenciales estan en su rango! Bien hecho. A seguir mejorando!";
     }
 });
-
-sessionStorage.setItem("elementoselectricos",JSON.stringify(Equipos));
