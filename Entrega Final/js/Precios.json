@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "Provincia":"Corrientes",
+        "CargoFijo":1025.18,
+        "CargoVariable":20.9201,
+        "Subsidio":5800,
+        "Alumbrado":458.08
+    },
+    {
+    "id":2,
+    "Provincia":"SantaFe",
+    "CargoFijo":356.8,
+    "CargoVariable":17.67,
+    "Alumbrado":2232.44
+
+},
+    {
+        "id":3,
+        "Provincia":"CapitalFederal",
+        "CargoFijo":124.84,
+        "CargoVariable":4.5}
+]

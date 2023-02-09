@@ -1,18 +1,16 @@
 const formulario = document.getElementById("ingreso-electrodomesticos");
+let formularioprovincia = document.getElementById("selectprov")
 const mensajeError = document.getElementById('mensaje-error');
 const tabla = document.getElementById("tabla");
 let MensajeTotal = document.getElementById("mensaje-totales");
-const EquiposDelLocalStorage=JSON.parse(localStorage.getItem("elementoselectricos"))|| [];
-const Equipos = EquiposDelLocalStorage.map((electrodomestico)=>{
+const EquiposDelLocalStorage = JSON.parse(localStorage.getItem("elementoselectricos")) || [];
+const Equipos = EquiposDelLocalStorage.map((electrodomestico) => {
     return new Electrodomesticos(electrodomestico);
 });
 
-console.log(EquiposDelLocalStorage,Equipos);
-
-for(const elementos of Equipos){
+for (const elementos of Equipos) {
     agregarFilaALaTabla(elementos);
 };
-
 
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -28,14 +26,13 @@ formulario.addEventListener("submit", (e) => {
     Equipos.push(electrodomestico)
 
     agregarFilaALaTabla(electrodomestico);
-    
+
     for (const input of e.target) {
         input.value = '';
     }
-    localStorage.setItem("elementoselectricos",JSON.stringify(Equipos));
+    localStorage.setItem("elementoselectricos", JSON.stringify(Equipos));
 }
 );
-
 
 const BotonFocos = document.getElementById("Consumo Focos")
 const BotonHeladeras = document.getElementById("Consumo Heladeras")
@@ -50,6 +47,7 @@ let consumoAires = 0;
 let consumoMicroondas = 0;
 let consumoPava = 0;
 let consumoLavarropas = 0;
+let consumoTotal = 0;
 
 BotonFocos.addEventListener("click", (e) => {
     let ArrayFocos = Equipos.filter(function (item) {
@@ -63,7 +61,7 @@ BotonFocos.addEventListener("click", (e) => {
         text: consumoFocos + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 BotonHeladeras.addEventListener("click", (e) => {
@@ -78,7 +76,7 @@ BotonHeladeras.addEventListener("click", (e) => {
         text: consumoHeladeras + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 BotonAire.addEventListener("click", (e) => {
@@ -93,7 +91,7 @@ BotonAire.addEventListener("click", (e) => {
         text: consumoAires + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 BotonMicroondas.addEventListener("click", (e) => {
@@ -108,7 +106,7 @@ BotonMicroondas.addEventListener("click", (e) => {
         text: consumoMicroondas + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 
@@ -124,7 +122,7 @@ BotonPava.addEventListener("click", (e) => {
         text: consumoPava + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 BotonLavarropas.addEventListener("click", (e) => {
@@ -139,37 +137,52 @@ BotonLavarropas.addEventListener("click", (e) => {
         text: consumoLavarropas + "kW",
         icon: 'info',
         confirmButtonText: 'Cerrar'
-      });
+    });
 });
 
 BotonTotales.addEventListener("click", (e) => {
-    const consumoTotal = Equipos.reduce((acc, Equipos) => {
-        return acc + Calcular(Equipos)
-    }, 0)
-
+    const consumoTotal=CalcularConsumoTotal(Equipos);
     if (consumoTotal > 9) {
         Swal.fire({
             title: 'Su consumo total esta por encima encima del promedio, por favor mejorar, el medioambiente se lo ruega Cuidemos el planeta :(',
-            text: "Tiene un consumo de " + consumoTotal + "kW",
+            text: "Tiene un consumo de " + consumoTotal + "kW-h por dia",
             icon: 'error',
             confirmButtonText: 'Cerrar',
-            background:"red"
-          });
+            background: "red",
+            color: "black"
+        });
     } else if (consumoTotal < 8) {
         Swal.fire({
             title: 'Su consumo total esta por debajo del promedio,bien hecho! El medio ambiente se lo agradece! PLANETA FELIZ :)',
-            text: "Tiene un consumo de " + consumoTotal + "kW",
+            text: "Tiene un consumo de " + consumoTotal + "kW-h por dia",
             icon: 'success',
             confirmButtonText: 'Cerrar',
-            background:"green"
-          });
+            background: "green",
+            color: "black"
+        });
     } else {
         Swal.fire({
             title: 'Su consumo total se encuentra en el promedio, el 80% de los consumos residenciales estan en su rango! Bien hecho. A seguir mejorando!',
-            text: "Tiene un consumo de " + consumoTotal + "kW",
+            text: "Tiene un consumo de " + consumoTotal + "kW-h por dia",
             icon: 'warning',
             confirmButtonText: 'Cerrar',
-            background:"yellow"
-          });
+            background: "yellow",
+            color: "black"
+        });
     }
 });
+
+const BotonPrecio = document.getElementById("Precio")
+let CostoMensual = 0;
+
+BotonPrecio.addEventListener("click", (e) => {
+    let Nombreprovincia = formularioprovincia.value
+    const consumoTotal=CalcularConsumoTotal(Equipos);
+    fetch("./js/Precios.json").then((response) => response.json())
+        .then((data) => {
+            CalculoCosto(Nombreprovincia,data,consumoTotal);
+        })
+});
+
+
+
