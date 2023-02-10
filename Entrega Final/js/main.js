@@ -58,7 +58,7 @@ BotonFocos.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus Focos es',
-        text: consumoFocos + "kW",
+        text: consumoFocos + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
@@ -73,7 +73,7 @@ BotonHeladeras.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus Heladeras es',
-        text: consumoHeladeras + "kW",
+        text: consumoHeladeras + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
@@ -88,7 +88,7 @@ BotonAire.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus Aires Acondicionados es',
-        text: consumoAires + "kW",
+        text: consumoAires + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
@@ -103,7 +103,7 @@ BotonMicroondas.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus Microondas es',
-        text: consumoMicroondas + "kW",
+        text: consumoMicroondas + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
@@ -119,7 +119,7 @@ BotonPava.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus Pavas Electricas es',
-        text: consumoPava + "kW",
+        text: consumoPava + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
@@ -134,7 +134,7 @@ BotonLavarropas.addEventListener("click", (e) => {
     }, 0)
     Swal.fire({
         title: 'El consumo de sus lavarropas es',
-        text: consumoLavarropas + "kW",
+        text: consumoLavarropas + "kW-h",
         icon: 'info',
         confirmButtonText: 'Cerrar'
     });
